@@ -1,0 +1,25 @@
+{
+  "name": "Pique",
+  "version": "1.0.0",
+  "description": "Famecult Musie Video",
+  "main": "./app/Pique.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yotam Mann",
+  "license": "Copyright",
+  "dependencies": {
+    "autoprefixer-loader": "^2.1.0",
+    "brfs": "*",
+    "component-resolver-webpack": "*",
+    "css-loader": "^0.17.0",
+    "file-loader": "*",
+    "html-loader": "*",
+    "raw-loader": "*",
+    "sass-loader": "^2.0.1",
+    "style-loader": "*",
+    "transform-loader": "*",
+    "url-loader": "*",
+    "webpack": "*"
+  }
+}

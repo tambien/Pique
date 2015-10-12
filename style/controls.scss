@@ -1,0 +1,101 @@
+$ControlHeight : 60px;
+
+$LineColor : #47E247;
+$LineWidth : 8px;
+
+$ButtonSize : $ControlHeight;
+$ButtonColor: #ff00ff;
+
+#Controls {
+	width: 0px;
+	height: $ControlHeight;
+	left: 5%;
+	bottom: 10px;
+	position: absolute;
+	border-left: $LineWidth solid $LineColor;
+	border-right: $LineWidth solid $LineColor;
+	overflow: hidden;
+	transition: width 0.5s ease-out;
+
+	#Horizontal {
+		width: 100%;
+		height: $LineWidth;
+		background-color: $LineColor;
+		margin-top: -$LineWidth / 2;
+		position: absolute;
+		left: 0px;
+		top: 50%;
+		box-shadow: 4px 7px 5px #444;
+	}
+
+	#PlayButton {
+		/* border-top: $ButtonSize/2 solid transparent;
+		border-bottom: $ButtonSize/2 solid transparent;
+		border-left: $ButtonSize solid $ButtonColor; */
+		z-index: 100;
+		left: 0px;
+		margin-left: 10px;
+		position: absolute;
+		width: $ButtonSize;
+		height: $ButtonSize;
+		color: $ButtonColor;
+		text-align: center;
+		font-size: 72px;
+		line-height: 72px;
+		opacity: 0;
+		transition: opacity 0.5s 0.1s, transform 0.1s;
+		cursor: pointer;
+		background-color: transparent;
+		user-select: none;
+	}
+}
+
+#Controls.Expand {
+	width: calc(90% - #{$LineWidth * 2});
+
+	$shadow : 4px 4px 8px #444;
+
+	#PlayButton {
+		transform: scale(1);
+		opacity: 1;
+		text-shadow: $shadow;
+		box-shadow: none;
+	}
+
+	#PlayButton:hover {
+		color: yellow;
+	}
+
+	#PlayButton.Playing:hover {
+		background-color: yellow;
+	}
+
+	#PlayButton.Transition {
+		transform: scale(0.01);
+	}
+
+	#PlayButton.Playing {
+		background-color: $ButtonColor;
+		text-shadow: none;
+		box-shadow: $shadow;
+	}
+
+	#PlayButton.Buffering:before {
+		content: "BUFFERING";
+		position: absolute;
+		color: black;
+		font-family: sans-serif;
+		font-size: 12px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+
+	#PlayButton.Dragging.Playing {
+		background-color: red;
+	}
+
+	#PlayButton.Dragging {
+		color: red;
+	}
+}
