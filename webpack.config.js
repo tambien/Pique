@@ -20,7 +20,8 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.ResolverPlugin([
-			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])], ["normal", "loader"])
+			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])], ["normal", "loader"]),
+		new webpack.optimize.UglifyJsPlugin(),
 	   ],
 	 module: {
 		loaders: [
@@ -41,5 +42,5 @@ module.exports = {
 			}
 		]
 	},
-	devtool: "#eval"
+	// devtool: "#eval"
 };
