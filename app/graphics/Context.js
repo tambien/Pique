@@ -9,7 +9,6 @@ define(["jquery", "main.scss", "pixi.js", "tweenjs", "controller/Mediator"],
 		Context.width = $("body").width();
 		Context.height = $("body").height();
 		renderer.resize(Context.width, Context.height);
-		console.log(Context.width, Context.height);
 		Mediator.trigger("resize");
 	});
 

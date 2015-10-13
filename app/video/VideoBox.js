@@ -39,7 +39,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		this.container.addChild(this.video);
 
 		this.text = new PIXI.Text("CLICK HERE", {
-			font : "45px sans-serif", 
+			font : "50px sans-serif", 
 			fill : 0xffffff, 
 			align : "center",
 			dropShadow : true,
@@ -73,6 +73,8 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		Mediator.on("resize", this.resize.bind(this));
 	};
 
+	var controlHeight = 70;
+
 	/**
 	 *  size and position the box
 	 */
@@ -82,11 +84,17 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 			width = 0.95;
 		}
 		this.container.width = Context.width * width;
-		var height = this.container.width * (MediaElement.height / MediaElement.width);
+		var ratio = MediaElement.width / MediaElement.height;
+		var height = this.container.width * (1 / ratio);
+		var scale = (Context.width * width) / MediaElement.width;
+		if (Context.width / (Context.height - controlHeight) > ratio){
+			width *= ratio / (Context.width / (Context.height - controlHeight));
+			this.container.width = Context.width * width;
+			height = this.container.width * (1 / ratio);
+		}
 		this.container.position.x = Context.width * ((1 - width) / 2);
-		this.container.scale.x = this.container.width / MediaElement.width;
-		this.container.scale.y = this.container.scale.x;
-		var top = ((Context.height - 70) / 2) - height / 2 + this.index * 5;
+		this.container.scale.x = this.container.scale.y= this.container.width / MediaElement.width;
+		var top = ((Context.height - controlHeight) / 2) - height / 2 + this.index * 5;
 		this.container.position.y = Math.max(top, 10);
 	};
 
@@ -151,7 +159,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 			.onUpdate(function(){
 				text.alpha = this.opacity;
 			})
-			.delay(500);
+			.delay(700);
 
 
 		var open = new TWEEN.Tween({"opacity" : 0})
