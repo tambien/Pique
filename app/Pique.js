@@ -1,4 +1,5 @@
-require(["jquery", "video/Loading", "controller/Support"], function($, Loading, Support){
+require(["jquery", "video/Loading", "controller/Support", "Info"], 
+	function($, Loading, Support, Info){
 
 	console.log("PIQUE");
 
