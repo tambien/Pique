@@ -82,8 +82,9 @@ $ButtonColor: #ff00ff;
 
 	#PlayButton.Buffering:before {
 		content: "BUFFERING";
+		text-shadow: 4px 4px 4px #00f;
 		position: absolute;
-		color: black;
+		color: white;
 		font-family: sans-serif;
 		font-size: 12px;
 		top: 50%;
