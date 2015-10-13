@@ -1,0 +1,94 @@
+$yellow : #F1F16F;
+$pink : #FB54FB;
+$green : #50FF47;
+$blue : #0ff;
+
+$ButtonSize : 40px;
+$transitionTime : 0.3s;
+
+#Info {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 1000;
+	width: $ButtonSize;
+	height: $ButtonSize;
+	background-color: black;
+	border-radius: 2px;
+	transition: width $transitionTime, height $transitionTime;
+	overflow: hidden;
+
+	#Question {
+		background-color: black;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		width: $ButtonSize;
+		height: $ButtonSize;
+		text-align: center;
+		line-height: $ButtonSize;
+		color: white;
+		cursor: pointer;
+		font-size: 20px;
+		font-family: sans-serif;
+		z-index: 1000;
+	}
+
+	#Question:before {
+		transition: transform $transitionTime;
+		transform: rotate(0deg);
+		content: "?";
+	}
+
+	#Question:hover {
+		color: $green;
+		// background-color: white;
+	}
+
+	#Content {
+		font-family: sans-serif;
+		line-height: 24px;
+		color: white;
+		opacity: 0;
+		margin: 25px;
+		margin-top: $ButtonSize;
+		transition: opacity $transitionTime;
+
+		#Title {
+			color: $yellow;
+			font-weight: bold;
+			font-size: 1.4em;
+		}
+
+		#By, #Site {
+			font-size: 0.8em;
+		}
+
+		a {
+			text-decoration: none;
+			color: white;
+			font-weight: bold;
+		}
+
+		a:hover {
+			color: $blue;
+		}
+		a:hover:active {
+			color: white;
+		}
+	}
+}
+
+#Info.Expanded {
+	width: 160px;
+	height: 185px;
+
+	#Question:before {
+		content: "✕";
+		transform: rotate(360deg);
+	}
+
+	#Content {
+		opacity: 1;
+	}
+}
