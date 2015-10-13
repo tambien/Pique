@@ -33,9 +33,8 @@ module.exports = {
 				loader: "json-loader"
 			},
 			{
-				test: /\.png$/,
-				loader: "url-loader",
-			},
+				test: /\.(png|jpg)$/, 
+				loader: "url-loader"},
 			{
 				test: /\.js$/,
 				loader: "transform/cacheable?brfs"
