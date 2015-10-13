@@ -6,6 +6,7 @@ define(["jquery", "controller/Mediator", "video/Loading"], function($, Mediator,
 	var video  = $("<video autostart='0'>").get(0);
 
 	video.src = "./assets/video.mp4";
+	video.preload = "auto";
 	video.load();
 	$(video).on("canplaythrough", function(){
 		video.pause();
