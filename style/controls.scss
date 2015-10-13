@@ -1,10 +1,10 @@
 $ControlHeight : 60px;
 
-$LineColor : #47E247;
+$LineColor : #0ff;
 $LineWidth : 8px;
 
 $ButtonSize : $ControlHeight;
-$ButtonColor: #ff00ff;
+$ButtonColor: #FB54FB;
 
 #Controls {
 	width: 0px;
@@ -62,12 +62,14 @@ $ButtonColor: #ff00ff;
 		box-shadow: none;
 	}
 
+	$hover: #F1F16F;
+
 	#PlayButton:hover {
-		color: yellow;
+		color: $hover;
 	}
 
 	#PlayButton.Playing:hover {
-		background-color: yellow;
+		background-color: $hover;
 	}
 
 	#PlayButton.Transition {
@@ -92,11 +94,13 @@ $ButtonColor: #ff00ff;
 		transform: translate(-50%, -50%) rotate(-45deg);
 	}
 
+	$dragging : #50FF47;
+
 	#PlayButton.Dragging.Playing {
-		background-color: red;
+		background-color: $dragging;
 	}
 
 	#PlayButton.Dragging {
-		color: red;
+		color: $dragging;
 	}
 }
