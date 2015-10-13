@@ -70,17 +70,29 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		this.draw();
 
 		Mediator.on("first", this.first.bind(this));
+		Mediator.on("resize", this.resize.bind(this));
 	};
 
 	/**
 	 *  size and position the box
 	 */
 	Box.prototype.size = function(){
-		var width = 0.85;
+		var width = 0.9;
+		if (Context.width < 500){
+			width = 0.95;
+		}
 		this.container.width = Context.width * width;
+		var height = this.container.width * (MediaElement.height / MediaElement.width);
 		this.container.position.x = Context.width * ((1 - width) / 2);
+		this.container.scale.x = this.container.width / MediaElement.width;
 		this.container.scale.y = this.container.scale.x;
-		this.container.position.y = Context.height * 0.05 + this.index * 5;
+		var top = ((Context.height - 70) / 2) - height / 2 + this.index * 5;
+		this.container.position.y = Math.max(top, 10);
+	};
+
+	Box.prototype.resize = function(){
+		this.size();
+		this.draw();
 	};
 
 	/**
@@ -88,7 +100,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 	 */
 	Box.prototype.draw = function(){
 		this.mask.clear();
-		this.mask.beginFill(0x0000ff, 1);
+		this.mask.beginFill(0x000000, 1);
 		var top = 0;
 		var left = 0;
 		if (this.index === 1){
@@ -100,7 +112,6 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		this.mask.drawRect(left, top, MediaElement.width * this.width, this.height * MediaElement.height);
 		this.text.position.y = top + (this.height / 2) * MediaElement.height - this.text.height / 2;
 		this.text.position.x = this.width / 2 * MediaElement.width - this.text.width / 2;
-		window.text = this.text;
 	};
 
 	Box.prototype.mousedown = function(){

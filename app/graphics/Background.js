@@ -5,6 +5,11 @@ function (PIXI, Context, Mediator, TWEEN, $) {
 
 	window.filter = new PIXI.filters.RGBSplitFilter();
 
+	Mediator.on("resize", function(){
+		sprite.width = Context.width;
+		sprite.height = Context.height;
+	});
+
 	sprite.width = Context.width;
 	sprite.height = Context.height;
 
