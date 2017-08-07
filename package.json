@@ -7,18 +7,20 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yotam Mann",
-  "license": "Copyright",
   "dependencies": {
     "autoprefixer-loader": "^2.1.0",
-    "brfs": "*",
-    "component-resolver-webpack": "*",
-    "css-loader": "^0.17.0",
+    "css-loader": "^0.28.4",
     "file-loader": "*",
     "html-loader": "*",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.5.3",
+    "pixi-filters": "^2.0.0",
+    "pixi.js": "^4.5.4",
     "raw-loader": "*",
     "sass-loader": "^2.0.1",
     "style-loader": "*",
     "transform-loader": "*",
+    "tween.js": "^16.6.0",
     "url-loader": "*",
     "webpack": "*"
   }

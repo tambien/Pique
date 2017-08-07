@@ -1,4 +1,4 @@
-define(["video/MediaElement", "video/VideoBox", "tweenjs", "controller/Mediator"], 
+define(["video/MediaElement", "video/VideoBox", "tween.js", "controller/Mediator"], 
 	function (MediaElement, VideoBox, TWEEN, Mediator) {
 	
 	var box0 = new VideoBox(0);
