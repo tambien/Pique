@@ -1,9 +1,11 @@
-define(["pixi.js", "graphics/Context", "controller/Mediator", "tweenjs", "jquery"], 
-function (PIXI, Context, Mediator, TWEEN, $) {
+define(["pixi.js", "graphics/Context", "controller/Mediator", "tween.js", "jquery", "pixi-filters"], 
+function (PIXI, Context, Mediator, TWEEN, $, pixiFilters) {
+
+	console.log(pixiFilters)
 
 	window.sprite = new PIXI.Sprite.fromImage("./assets/bg.jpg");
 
-	window.filter = new PIXI.filters.RGBSplitFilter();
+	window.filter = new pixiFilters.RGBSplitFilter();
 
 	Mediator.on("resize", function(){
 		sprite.width = Context.width;

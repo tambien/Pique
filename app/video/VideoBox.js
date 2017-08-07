@@ -1,12 +1,12 @@
-define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator", "tweenjs"], 
-	function (MediaElement, Context, $, Mediator, TWEEN) {
+define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator", "tween.js", "pixi-filters"], 
+	function (MediaElement, Context, $, Mediator, TWEEN, PIXIFilters) {
 
 	// var texture = PIXI.Texture.fromVideo(MediaElement.video);
-	var texture = new PIXI.Texture.fromVideo(MediaElement.video);
+	var texture = new PIXI.VideoBaseTexture.fromUrl("./assets/video.mp4");
 
-	var dropShadow = new PIXI.filters.DropShadowFilter();
+	var dropShadow = new PIXIFilters.DropShadowFilter();
 
-	var pixelate = new PIXI.filters.PixelateFilter();
+	var pixelate = new PIXIFilters.PixelateFilter();
 
 	window.pixelate = pixelate;
 	/*pixelate.size.x = MediaElement.height / 40;
@@ -51,7 +51,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		this.mask = new PIXI.Graphics();
 		this.container.addChild(this.mask);
 		
-		this.video.texture.crop.width = MediaElement.width;
+		// this.video.texture.crop.width = MediaElement.width;
 
 		this.container.mask = this.mask;
 

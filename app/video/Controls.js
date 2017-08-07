@@ -1,4 +1,4 @@
-define(["controller/Mediator", "video/MediaElement", "graphics/Context", "tweenjs", "jquery", "controls.scss"], 
+define(["controller/Mediator", "video/MediaElement", "graphics/Context", "tween.js", "jquery", "controls.scss"], 
 	function (Mediator, MediaElement, Context, TWEEN, $, controlStyle) {
 
 	var controls = $("<div>", {

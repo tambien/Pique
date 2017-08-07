@@ -2,9 +2,8 @@ var webpack = require("webpack");
 var path = require("path");
 
 module.exports = {
-	"context": __dirname,
 	entry: {
-		"Pique": "app/Pique",
+		"Pique": "./app/Pique",
 	},
 	output: {
 		filename: "./build/[name].js",
@@ -12,22 +11,13 @@ module.exports = {
 		sourceMapFilename : "[file].map",
 	},
 	resolve: {
-		root: __dirname,
-		modulesDirectories : ["bower_components", "app", "style", "node_modules"],
+		modules : ["app", "style", "node_modules"],
 	},
-	node: {
-		fs: 'empty'
-	},
-	plugins: [
-		new webpack.ResolverPlugin([
-			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])], ["normal", "loader"]),
-		new webpack.optimize.UglifyJsPlugin(),
-	   ],
 	 module: {
 		loaders: [
 			{
 				test: /\.scss$/,
-				loader: "style!css!autoprefixer!sass"
+				loader: "style-loader!css-loader!autoprefixer-loader!sass-loader"
 			},
 			{
 				test: /\.json$/,
@@ -35,12 +25,9 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpg)$/, 
-				loader: "url-loader"},
-			{
-				test: /\.js$/,
-				loader: "transform/cacheable?brfs"
+				loader: "url-loader"
 			}
 		]
 	},
-	// devtool: "#eval"
+	devtool: "#source-map"
 };

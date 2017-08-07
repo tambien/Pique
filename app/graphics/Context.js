@@ -1,4 +1,4 @@
-define(["jquery", "main.scss", "pixi.js", "tweenjs", "controller/Mediator"], 
+define(["jquery", "main.scss", "pixi.js", "tween.js", "controller/Mediator"], 
 	function($, mainStyle, PIXI, TWEEN, Mediator){
 
 	var renderer = new PIXI.WebGLRenderer($("body").width(), $("body").height());
