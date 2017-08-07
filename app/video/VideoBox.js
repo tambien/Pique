@@ -2,7 +2,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 	function (MediaElement, Context, $, Mediator, TWEEN, PIXIFilters) {
 
 	// var texture = PIXI.Texture.fromVideo(MediaElement.video);
-	var texture = new PIXI.VideoBaseTexture.fromUrl("./assets/video.mp4");
+	var texture = new PIXI.Texture.fromVideo(MediaElement.video);
 
 	var dropShadow = new PIXIFilters.DropShadowFilter();
 
@@ -32,14 +32,15 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		 */
 		this.container = new PIXI.Container();
 
-		this.container.filters = [dropShadow];
+		// this.container.filters = [dropShadow];
 
 
 		this.video = new PIXI.Sprite(texture);
 		this.container.addChild(this.video);
 
 		this.text = new PIXI.Text("CLICK HERE", {
-			font : "50px sans-serif", 
+			fontFamily : "sans-serif", 
+			fontSize : "50px",
 			fill : 0xffffff, 
 			align : "center",
 			dropShadow : true,
@@ -51,7 +52,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 		this.mask = new PIXI.Graphics();
 		this.container.addChild(this.mask);
 		
-		// this.video.texture.crop.width = MediaElement.width;
+		// this.video.texture.trim = new PIXI.Rectangle(0, 0, MediaElement.width*3, MediaElement.height)
 
 		this.container.mask = this.mask;
 
@@ -123,7 +124,7 @@ define(["video/MediaElement", "graphics/Context", "jquery", "controller/Mediator
 	};
 
 	Box.prototype.mousedown = function(){
-		this.container.filters = [dropShadow];
+		// this.container.filters = [dropShadow];
 		this.video.filters = [pixelate];
 		this.position++;
 		this.position = this.position % 3;

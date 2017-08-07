@@ -6,11 +6,11 @@ $blue : #0ff;
 
 $ControlHeight : 60px;
 
-$LineColor : $blue;
+$LineColor : #ff00ff;
 $LineWidth : 8px;
 
 $ButtonSize : $ControlHeight;
-$ButtonColor: $pink;
+$ButtonColor: white;
 
 #Controls {
 	width: 0px;
@@ -31,7 +31,7 @@ $ButtonColor: $pink;
 		position: absolute;
 		left: 0px;
 		top: 50%;
-		box-shadow: 4px 7px 5px #444;
+		// box-shadow: 4px 7px 5px #444;
 	}
 
 	#PlayButton {
@@ -59,34 +59,52 @@ $ButtonColor: $pink;
 #Controls.Expand {
 	width: calc(90% - #{$LineWidth * 2});
 
-	$shadow : 4px 4px 8px #444;
+	// $shadow : 4px 4px 8px #444;
+	$shadow : none;
 
 	#PlayButton {
-		transform: scale(1);
+		transform: scale(0.9);
 		opacity: 1;
 		text-shadow: $shadow;
 		box-shadow: none;
+
+		$hover: white;;
+
+
+		&.Playing {
+			background-color: $ButtonColor;
+			text-shadow: none;
+			box-shadow: $shadow;
+
+			&:hover{
+				background-color: $hover;
+			}
+		}
+
+		&.Transition {
+			transform: scale(0.01);
+		}
+
+		$dragging : #ff00ff;
+
+		&.Dragging {
+			color: $dragging;
+
+			&.Playing {
+				background-color: $dragging;
+			}
+		}
+
+		&:hover {
+			transform: scale(1);
+
+			&:active {
+				transform: scale(0.85);				
+			}
+		}
+
 	}
 
-	$hover: $yellow;
-
-	#PlayButton:hover {
-		color: $hover;
-	}
-
-	#PlayButton.Playing:hover {
-		background-color: $hover;
-	}
-
-	#PlayButton.Transition {
-		transform: scale(0.01);
-	}
-
-	#PlayButton.Playing {
-		background-color: $ButtonColor;
-		text-shadow: none;
-		box-shadow: $shadow;
-	}
 
 	#PlayButton.Buffering:before {
 		content: "BUFFERING";
@@ -100,13 +118,4 @@ $ButtonColor: $pink;
 		transform: translate(-50%, -50%) rotate(-45deg);
 	}
 
-	$dragging : $green;
-
-	#PlayButton.Dragging.Playing {
-		background-color: $dragging;
-	}
-
-	#PlayButton.Dragging {
-		color: $dragging;
-	}
 }
